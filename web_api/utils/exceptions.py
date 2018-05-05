@@ -1,5 +1,5 @@
-class CreateTopicException(Exception):
-    ''' Create topic exception '''
+class TopicException(Exception):
+    ''' Exception related to topic  '''
     def __init__(self, msg):
         self.status_code = 400
         self.msg = msg

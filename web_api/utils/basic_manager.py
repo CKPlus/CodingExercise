@@ -11,6 +11,10 @@ class BasicManager(object):
         self.data_set = data_source.data.setdefault(model_name, [])
 
     def get_query_set(self, **kwargs):
+        if kwargs.get('order') == 'desc':
+            self.data_set.sort(key=lambda topic: topic.upvote, reverse=True)
+        elif kwargs.get('order') == 'asc':
+            self.data_set.sort(key=lambda topic: topic.upvote, reverse=False)
         return self.data_set
 
     def create(self, **kwargs):
@@ -22,3 +26,13 @@ class BasicManager(object):
         self.data_set.append(instance)
 
         return instance
+
+    def update(self, **kwargs):
+        instance = self.data_set[kwargs.get('id')]
+        for k in kwargs:
+            setattr(instance, k, kwargs.get(k))
+
+        return instance
+
+    def get(self, id):
+        return self.data_set[id]
