@@ -40,7 +40,13 @@ def create_topic():
 
     topic = Topics.manager.create(content=req_data.get('content'))
     client_result = ClientResult()
-    client_result.data({'id': topic.id})
+    client_result.data({
+        'id': topic.id,
+        'content': topic.content,
+        'upvote': topic.upvote,
+        'downvote': topic.downvote,
+        'ctime': topic.ctime
+    })
 
     return client_result.to_json()
 
