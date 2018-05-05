@@ -10,7 +10,7 @@ class BasicManager(object):
         self.package_name = package_name
         self.data_set = data_source.data.setdefault(model_name, [])
 
-    def get_query_set(self):
+    def get_query_set(self, **kwargs):
         return self.data_set
 
     def create(self, **kwargs):
@@ -20,3 +20,5 @@ class BasicManager(object):
         kwargs.setdefault('id', len(self.data_set))
         instance = ModelCls(**kwargs)
         self.data_set.append(instance)
+
+        return instance
