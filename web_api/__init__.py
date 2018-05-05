@@ -1,5 +1,8 @@
+import json
+
 from flask import Flask, request, session
 from data_source import DataSource
+from web_api.utils.exceptions import CreateTopicException
 
 
 def create_app():
@@ -27,3 +30,8 @@ def after_request(response):
 
     session.clear()
     return response
+
+
+@app.errorhandler(CreateTopicException)
+def handle_invalid_request_error(error):
+    return json.dumps(error.to_dict()), error.status_code
