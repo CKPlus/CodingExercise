@@ -160,5 +160,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# vssoce
+.vscode/
 
 # End of https://www.gitignore.io/api/node<Plug>PeepOpenython
