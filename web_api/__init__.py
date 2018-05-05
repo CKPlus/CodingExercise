@@ -1,7 +1,7 @@
 import json
 
 from flask import Flask, request, session
-from data_source import DataSource
+from web_api.data_source import DataSource
 from web_api.utils.exceptions import TopicException
 
 
