@@ -1,7 +1,5 @@
 from flask import Flask, request, session
-
-# Views blueprint
-from web_api.topics.views import TOPICS_BP
+from data_source import DataSource
 
 
 def create_app():
@@ -11,7 +9,10 @@ def create_app():
 
 
 app = create_app()
+data_source = DataSource(app)
 
+# Views blueprint
+from web_api.topics.views import TOPICS_BP
 app.register_blueprint(TOPICS_BP, url_prefix='/topics')
 
 
