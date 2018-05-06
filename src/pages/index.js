@@ -52,7 +52,7 @@ class Index extends React.Component {
     fetch('/topics')
       .then(response => response.json())
       .then(data => this.setState({ topics: data }));
-  }
+  };
 
   createTopic = () => {
     fetch(`/topics`, {
@@ -65,9 +65,10 @@ class Index extends React.Component {
       }),
     })
       .then((data) => {
+        this.setState({topicContent: ''})
         this.fetchTopics()
       });
-  }
+  };
 
   handleUpVote = (id, event) => {
     fetch(`/topics/${id}/action/1`, { method: 'put' })
@@ -93,7 +94,7 @@ class Index extends React.Component {
     this.createTopic()
   };
 
-  handleKeyDown = (event) => {
+  handleSubmitTopicByKey = (event) => {
     let keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode === 13) {
       this.createTopic()
@@ -140,7 +141,7 @@ class Index extends React.Component {
           label="Topic"
           value={this.state.topicContent}
           onChange={this.handleChangeTopicContent}
-          onKeyDown={this.handleKeyDown}
+          onKeyDown={this.handleSubmitTopicByKey}
           className={classes.textField}
           margin="normal"
         />
