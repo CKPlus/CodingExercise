@@ -9,6 +9,7 @@ flask-testing = "==0.7.1"
 
 [packages]
 flask = "==1.0.2"
+gunicorn = "==19.8.1"
 
 [requires]
 python_version = "3.6"
