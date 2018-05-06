@@ -23,7 +23,8 @@ def get_topic():
         'content': topic.content,
         'upvote': topic.upvote,
         'downvote': topic.downvote,
-        'ctime': topic.ctime
+        'ctime': topic.ctime,
+        'result': topic.upvote - topic.downvote,
     } for topic in Topics.manager.get_topics()]
 
     client_result.data(ret_data)
@@ -71,6 +72,7 @@ def update_topic(topic_id, action_id):
         'content': topic.content,
         'upvote': topic.upvote,
         'downvote': topic.downvote,
+        'result': topic.upvote - topic.downvote,
     })
 
     return client_result.to_json()

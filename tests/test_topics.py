@@ -101,3 +101,4 @@ class TopicsTestCase(BaseTestCase):
                 self.assertEqual(len(resp.json), 2)
                 self.assertEqual(topic.get('upvote'), 2)
                 self.assertEqual(topic.get('downvote'), 2)
+                self.assertEqual(topic.get('result'), 0)
