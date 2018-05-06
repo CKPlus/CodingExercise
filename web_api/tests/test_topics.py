@@ -1,6 +1,6 @@
 import json
 
-from tests.base import BaseTestCase
+from web_api.tests.base import BaseTestCase
 from web_api import app
 from web_api.topics.views import TopicActions
 from web_api.topics.managers import TopicsManager
