@@ -16,7 +16,7 @@ class TopicActions(object):
 
 @TOPICS_BP.route("", methods=['GET'])
 def get_topic():
-    '''Get topics list'''
+    '''Get topic list and order by desc limit 20'''
     client_result = ClientResult()
     ret_data = [{
         'id': topic.id,
@@ -34,7 +34,7 @@ def get_topic():
 
 @TOPICS_BP.route("", methods=['POST'])
 def create_topic():
-    ''' Create topic '''
+    ''' Create topic and content does not exceed 255'''
     req_data = json.loads(request.data)
     if not all([req_data.get('content')]):
         raise TopicException('Must have content')
