@@ -95,7 +95,6 @@ class Index extends React.Component {
 
   handleKeyDown = (event) => {
     let keycode = (event.keyCode ? event.keyCode : event.which);
-    console.log(keycode)
     if (keycode === 13) {
       this.createTopic()
     }
