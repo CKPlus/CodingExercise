@@ -6,6 +6,7 @@ from web_api.utils.exceptions import TopicException
 
 
 def create_app():
+    ''' Create a flask app '''
     flask_app = Flask(__name__, static_url_path='')
     flask_app.secret_key = '9bc853e5-0e93-46aa-836a-1d1799f999c2'
     return flask_app
@@ -21,7 +22,7 @@ app.register_blueprint(TOPICS_BP, url_prefix='/topics')
 
 @app.route("/")
 def index():
-    ''' Serve static html page'''
+    ''' Serve static html page '''
     return app.send_static_file('index.html')
 
 

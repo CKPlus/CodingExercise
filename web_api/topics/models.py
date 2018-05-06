@@ -16,7 +16,7 @@ class Topics(object):
         self.ctime = datetime.utcnow()
 
         if len(kwargs.get('content', '')) > 255:
-            raise TopicException('Content can not exceed 255 characters')
+            raise TopicException('Content exceed 255 characters')
 
     def __str__(self):
         return 'Topic <%s>' % self.id

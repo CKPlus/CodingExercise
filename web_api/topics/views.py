@@ -54,9 +54,9 @@ def create_topic():
 
 @TOPICS_BP.route("/<int:topic_id>/action/<int:action_id>", methods=['PUT'])
 def update_topic(topic_id, action_id):
-    ''' Vote to topic by action'''
+    ''' Vote topic by action'''
     if action_id not in [TopicActions.UPVOTE, TopicActions.DOWNVOTE]:
-        raise TopicException('Wrong action_id. Must be `1` or `2`')
+        raise TopicException('No such action_id. Must be `1` or `2`')
 
     try:
         if action_id == TopicActions.UPVOTE:
