@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "material-ui": "next",
     "prop-types": "latest",
     "react": "latest",
@@ -11,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf ./web_api/static/* && cp -R ./build/* ./web_api/static/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
