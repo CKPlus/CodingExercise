@@ -3,6 +3,7 @@ import json
 from tests.base import BaseTestCase
 from web_api import app
 from web_api.topics.views import TopicActions
+from web_api.topics.managers import TopicsManager
 
 
 class TopicsTestCase(BaseTestCase):
@@ -102,3 +103,15 @@ class TopicsTestCase(BaseTestCase):
                 self.assertEqual(topic.get('upvote'), 2)
                 self.assertEqual(topic.get('downvote'), 2)
                 self.assertEqual(topic.get('result'), 0)
+
+    def test_07_create_topic_overlimit(self):
+        with self.test_app as c:
+            for _ in range(25):
+                resp = c.post('/topics', data=json.dumps({
+                    'content': self.topic_content
+                }))
+                self.assert200(resp)
+
+            resp = c.get('/topics')
+            self.assert200(resp)
+            self.assertEqual(len(resp.json), TopicsManager.TOPIC_LIMIT)
