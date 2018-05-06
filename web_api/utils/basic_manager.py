@@ -11,11 +11,12 @@ class BasicManager(object):
         self.data_set = data_source.data.setdefault(model_name, [])
 
     def get_query_set(self, **kwargs):
+        ret = []
         if kwargs.get('order') == 'desc':
-            self.data_set.sort(key=lambda topic: topic.upvote, reverse=True)
+            ret = sorted(self.data_set, key=lambda topic: topic.upvote, reverse=True)
         elif kwargs.get('order') == 'asc':
-            self.data_set.sort(key=lambda topic: topic.upvote, reverse=False)
-        return self.data_set
+            ret = sorted(self.data_set, key=lambda topic: topic.upvote, reverse=False)
+        return ret
 
     def create(self, **kwargs):
         module = importlib.import_module(
